@@ -1,8 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { useState } from 'react';
+import expensesReducer from './slices/expensesSlice';
+import filtersReducer from './slices/filtersSlice';
 
 export const store = configureStore({
-	reducer: {},
+	reducer: {
+		expenses: expensesReducer,
+		filters: filtersReducer,
+	},
 });
 
 export type RootState = ReturnType<typeof store.getState>;
