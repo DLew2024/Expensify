@@ -1,10 +1,10 @@
-import type { ComponentType } from "react";
-import AddExpensePage from "../../components/Routes/AddExpensePage/AddExpensePage";
-import EditExpensePage from "../../components/Routes/EditExpensePage/EditExpensePage";
-import ExpenseDashBoardPage from "../../components/Routes/ExpenseDashboard/ExpenseDashboard";
-import HelpExpensePage from "../../components/Routes/HelpPage/HelpPage";
-import NotFoundPage from "../../components/Routes/NotFoundPage/NotFoundPage";
-import { NavigationRoutePaths } from "./NavigationRoutePaths";
+import type { ComponentType } from 'react';
+import AddExpensePage from '../../components/Routes/AddExpensePage/AddExpensePage';
+import EditExpensePage from '../../components/Routes/EditExpensePage/EditExpensePage';
+import ExpenseDashBoardPage from '../../components/Routes/ExpenseDashboard/ExpenseDashboard';
+import HelpExpensePage from '../../components/Routes/HelpPage/HelpPage';
+import NotFoundPage from '../../components/Routes/NotFoundPage/NotFoundPage';
+import { NavigationRoutePaths } from './NavigationRoutePaths';
 
 interface AppRoute {
 	path: string;
@@ -21,7 +21,7 @@ export const appRoutes: AppRoute[] = [
 		Component: AddExpensePage,
 	},
 	{
-		path: NavigationRoutePaths.EDIT_PAGE,
+		path: NavigationRoutePaths.EDIT_PATTERN,
 		Component: EditExpensePage,
 	},
 	{

@@ -1,7 +1,7 @@
-import clsx from "clsx";
-import { NavLink } from "react-router";
-import { NavigationRoutePaths } from "../../utils/Navigation/NavigationRoutePaths";
-import styles from "./styles/_Header.module.scss";
+import clsx from 'clsx';
+import { NavLink } from 'react-router';
+import { NavigationRoutePaths } from '../../utils/Navigation/NavigationRoutePaths';
+import styles from './styles/_Header.module.scss';
 
 const Header = () => {
 	return (
@@ -28,7 +28,7 @@ const Header = () => {
 				Create Expense
 			</NavLink>
 			<NavLink
-				to={NavigationRoutePaths.EDIT_PAGE}
+				to={NavigationRoutePaths.EDIT_PATTERN}
 				className={({ isActive }) =>
 					clsx(styles.link, {
 						[styles.isActive]: isActive,
