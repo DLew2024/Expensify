@@ -1,5 +1,5 @@
-import { Link } from "react-router";
-import { NavigationRoutePaths } from "../../../utils/Navigation/NavigationRoutePaths";
+import { Link } from 'react-router';
+import { NavigationRoutePaths } from '../../../utils/Navigation/NavigationRoutePaths';
 
 const NotFoundPage = () => {
 	return (

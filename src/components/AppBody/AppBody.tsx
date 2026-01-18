@@ -1,5 +1,5 @@
-import { Route, Routes } from "react-router";
-import { appRoutes } from "../../utils/Navigation/AppRoutes";
+import { Route, Routes } from 'react-router';
+import { appRoutes } from '../../utils/Navigation/AppRoutes';
 
 const AppBody = () => {
 	return (

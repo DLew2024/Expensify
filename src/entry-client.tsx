@@ -1,13 +1,17 @@
-import { StrictMode } from "react";
-import { hydrateRoot } from "react-dom/client";
-import { BrowserRouter } from "react-router";
-import App from "./App";
+import { StrictMode } from 'react';
+import { hydrateRoot } from 'react-dom/client';
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router';
+import App from './App';
+import { store } from './store/store';
 
 hydrateRoot(
-	document.getElementById("root") as HTMLElement,
+	document.getElementById('root') as HTMLElement,
 	<StrictMode>
-		<BrowserRouter>
-			<App />
-		</BrowserRouter>
+		<Provider store={store}>
+			<BrowserRouter>
+				<App />
+			</BrowserRouter>
+		</Provider>
 	</StrictMode>,
 );
