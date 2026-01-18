@@ -11,7 +11,7 @@ const Header = () => {
 				to={NavigationRoutePaths.DASHBOARD}
 				className={({ isActive }) =>
 					clsx(styles.link, {
-						[styles.active]: isActive,
+						[styles.isActive]: isActive,
 					})
 				}
 			>
@@ -21,7 +21,7 @@ const Header = () => {
 				to={NavigationRoutePaths.CREATE_PAGE}
 				className={({ isActive }) =>
 					clsx(styles.link, {
-						[styles.active]: isActive,
+						[styles.isActive]: isActive,
 					})
 				}
 			>
@@ -31,7 +31,7 @@ const Header = () => {
 				to={NavigationRoutePaths.EDIT_PAGE}
 				className={({ isActive }) =>
 					clsx(styles.link, {
-						[styles.active]: isActive,
+						[styles.isActive]: isActive,
 					})
 				}
 			>
@@ -41,7 +41,7 @@ const Header = () => {
 				to={NavigationRoutePaths.HELP_PAGE}
 				className={({ isActive }) =>
 					clsx(styles.link, {
-						[styles.active]: isActive,
+						[styles.isActive]: isActive,
 					})
 				}
 			>
