@@ -4,6 +4,7 @@ import { addExpense } from '../../../store/slices/expensesSlice';
 import { setTextFilter } from '../../../store/slices/filtersSlice';
 import { store } from '../../../store/store';
 import ExpenseList from './components/ExpenseList';
+import ExpenseListFilters from './components/ExpenseListFilters';
 
 const ExpenseDashBoardPage = () => {
 	const dispatch = useDispatch();
@@ -71,6 +72,7 @@ const ExpenseDashBoardPage = () => {
 	return (
 		<div>
 			This is from my dashboard page
+			<ExpenseListFilters />
 			<ExpenseList />
 		</div>
 	);
