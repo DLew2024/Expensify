@@ -1,17 +1,21 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import type { Filters } from '../../utils/DataTypes/FilterTypes';
+import {
+	FilterSortBy,
+	type FilterSortByType,
+} from '../../utils/DataTypes/FilterTypes';
 
 type FiltersState = {
-	filters: Filters;
+	text: string;
+	sortBy: FilterSortByType;
+	startDate?: number;
+	endDate?: number;
 };
 
 const initialState: FiltersState = {
-	filters: {
-		text: '',
-		sortBy: 'date',
-		startDate: undefined,
-		endDate: undefined,
-	},
+	text: '',
+	sortBy: FilterSortBy.DATE,
+	startDate: undefined,
+	endDate: undefined,
 };
 
 const filtersSlice = createSlice({
@@ -19,22 +23,19 @@ const filtersSlice = createSlice({
 	initialState,
 	reducers: {
 		setTextFilter(state, action: PayloadAction<string>) {
-			state.filters.text = action.payload;
+			state.text = action.payload;
 		},
-		sortByAmount(state) {
-			state.filters.sortBy = 'amount';
-		},
-		sortByDate(state) {
-			state.filters.sortBy = 'date';
+		setSortBy(state, action: PayloadAction<FilterSortByType>) {
+			state.sortBy = action.payload;
 		},
 		setStartDate(state, action: PayloadAction<number | undefined>) {
-			state.filters.startDate = action.payload;
+			state.startDate = action.payload;
 		},
 		setEndDate(state, action: PayloadAction<number | undefined>) {
-			state.filters.endDate = action.payload;
+			state.endDate = action.payload;
 		},
 	},
 });
 
-export const { setTextFilter, sortByAmount, sortByDate } = filtersSlice.actions;
+export const { setTextFilter, setSortBy } = filtersSlice.actions;
 export default filtersSlice.reducer;

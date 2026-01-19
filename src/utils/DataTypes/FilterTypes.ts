@@ -1,6 +1,13 @@
+export const FilterSortBy = {
+	DATE: 'date',
+	AMOUNT: 'amount',
+} as const;
+
+export type FilterSortByType = (typeof FilterSortBy)[keyof typeof FilterSortBy];
+
 export type Filters = {
 	text: string;
-	sortBy: string;
-	startDate: number | undefined;
-	endDate: number | undefined;
+	sortBy: FilterSortByType;
+	startDate?: number;
+	endDate?: number;
 };
