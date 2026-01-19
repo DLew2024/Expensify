@@ -1,10 +1,17 @@
 import { useDispatch, useSelector } from '../../../../store/hooks';
-import { setTextFilter } from '../../../../store/slices/filtersSlice';
+import {
+	setSortBy,
+	setTextFilter,
+} from '../../../../store/slices/filtersSlice';
 import type { AppState } from '../../../../store/store';
+import {
+	FilterSortBy,
+	type FilterSortByType,
+} from '../../../../utils/DataTypes/FilterTypes';
 
 const ExpenseListFilters = () => {
 	const dispatch = useDispatch();
-	const $filters = useSelector((state: AppState) => state.filters.filters);
+	const $filters = useSelector((state: AppState) => state.filters);
 
 	return (
 		<div>
@@ -16,6 +23,16 @@ const ExpenseListFilters = () => {
 				value={$filters.text}
 				onChange={(e) => dispatch(setTextFilter(e.target.value))}
 			/>
+			<select
+				title="Sort By"
+				value={$filters.sortBy}
+				onChange={(e) => {
+					dispatch(setSortBy(e.target.value as FilterSortByType));
+				}}
+			>
+				<option value={FilterSortBy.DATE}>Date</option>
+				<option value={FilterSortBy.AMOUNT}>Amount</option>
+			</select>
 		</div>
 	);
 };

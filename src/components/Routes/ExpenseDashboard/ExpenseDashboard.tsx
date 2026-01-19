@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { addExpense } from '../../../store/slices/expensesSlice';
-import { setTextFilter } from '../../../store/slices/filtersSlice';
 import { store } from '../../../store/store';
 import ExpenseList from './components/ExpenseList';
 import ExpenseListFilters from './components/ExpenseListFilters';
@@ -59,12 +58,6 @@ const ExpenseDashBoardPage = () => {
 				createdAt: Date.now(),
 			}),
 		);
-
-		const t = setTimeout(() => {
-			dispatch(setTextFilter('rent'));
-		}, 3000);
-
-		return () => clearTimeout(t);
 	}, [dispatch]);
 
 	console.log(store.getState());
