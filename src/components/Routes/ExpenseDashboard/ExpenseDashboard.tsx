@@ -22,7 +22,7 @@ const ExpenseDashBoardPage = () => {
 		{
 			description: 'Water bill',
 			note: 'Printer paper and ink',
-			amount: 4599.67,
+			amount: 1299.37,
 		},
 		{
 			description: 'Gas bill',
