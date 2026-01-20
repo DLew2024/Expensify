@@ -4,7 +4,9 @@ import { getVisibleExpenses } from '../../../../utils/Functions/Utility/ExpenseF
 import ExpenseListItem from './ExpenseListItem';
 
 const ExpenseList = () => {
-	const $expenses = useSelector((state: AppState) => state.expenses);
+	const $expenses = useSelector(
+		(state: AppState) => state.expenses.expenseItems,
+	);
 	const $filters = useSelector((state: AppState) => state.filters);
 
 	const selectExpenses = getVisibleExpenses($expenses, $filters);

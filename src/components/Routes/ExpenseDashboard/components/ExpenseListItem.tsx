@@ -1,7 +1,7 @@
 import { useDispatch } from '../../../../store/hooks';
 import { removeExpense } from '../../../../store/slices/expensesSlice';
 import type { Expense } from '../../../../utils/DataTypes/ExpenseTypes';
-import { formatEpochMillisDateTimeSafe } from '../../../../utils/Functions/Conversions/DateUtils';
+import { formatEpochSecondsSafe } from '../../../../utils/Functions/Conversions/DateUtils';
 import { convertPriceToString } from '../../../../utils/Functions/Conversions/StringUtils';
 
 const ExpenseListItem = ({ id, description, amount, createdAt }: Expense) => {
@@ -13,7 +13,7 @@ const ExpenseListItem = ({ id, description, amount, createdAt }: Expense) => {
 			<br />
 			<p>
 				{`${convertPriceToString(amount)} -
-                ${formatEpochMillisDateTimeSafe(createdAt)}`}
+                ${formatEpochSecondsSafe(createdAt)}`}
 			</p>
 			<button type="button" onClick={() => dispatch(removeExpense(id))}>
 				Remove
