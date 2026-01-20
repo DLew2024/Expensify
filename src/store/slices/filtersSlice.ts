@@ -1,15 +1,7 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import {
-	FilterSortBy,
-	type FilterSortByType,
-} from '../../utils/DataTypes/FilterTypes';
+import { FilterSortBy, type Filters } from '../../utils/DataTypes/FilterTypes';
 
-type FiltersState = {
-	text: string;
-	sortBy: FilterSortByType;
-	startDate?: number;
-	endDate?: number;
-};
+type FiltersState = Filters;
 
 const initialState: FiltersState = {
 	text: '',
@@ -22,16 +14,16 @@ const filtersSlice = createSlice({
 	name: 'filters',
 	initialState,
 	reducers: {
-		setTextFilter(state, action: PayloadAction<string>) {
+		setTextFilter(state, action: PayloadAction<FiltersState['text']>) {
 			state.text = action.payload;
 		},
-		setSortBy(state, action: PayloadAction<FilterSortByType>) {
+		setSortBy(state, action: PayloadAction<FiltersState['sortBy']>) {
 			state.sortBy = action.payload;
 		},
-		setStartDate(state, action: PayloadAction<number | undefined>) {
+		setStartDate(state, action: PayloadAction<FiltersState['startDate']>) {
 			state.startDate = action.payload;
 		},
-		setEndDate(state, action: PayloadAction<number | undefined>) {
+		setEndDate(state, action: PayloadAction<FiltersState['endDate']>) {
 			state.endDate = action.payload;
 		},
 	},

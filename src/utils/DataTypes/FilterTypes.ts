@@ -1,3 +1,5 @@
+import type { EpochSeconds } from './DateTypes';
+
 export const FilterSortBy = {
 	DATE: 'date',
 	AMOUNT: 'amount',
@@ -8,6 +10,6 @@ export type FilterSortByType = (typeof FilterSortBy)[keyof typeof FilterSortBy];
 export type Filters = {
 	text: string;
 	sortBy: FilterSortByType;
-	startDate?: number;
-	endDate?: number;
+	startDate?: EpochSeconds;
+	endDate?: EpochSeconds;
 };

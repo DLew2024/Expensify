@@ -1,3 +1,4 @@
+import type { EpochSeconds } from './DateTypes';
 import type { Guid } from './Guid';
 
 export type Expense = {
@@ -5,5 +6,5 @@ export type Expense = {
 	description: string;
 	note: string;
 	amount: number;
-	createdAt: string;
+	createdAt: EpochSeconds;
 };

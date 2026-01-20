@@ -19,10 +19,10 @@ const expensesSlice = createSlice({
 	reducers: {
 		addExpense(state, action: PayloadAction<ExpenseItem>) {
 			const idMatchExists = state.expenseItems.some(
-				(e) => e.id === action.payload.id,
+				(exp) => exp.id === action.payload.id,
 			);
 			const descriptionMatchExists = state.expenseItems.some(
-				(e) => e.description === action.payload.description,
+				(exp) => exp.description === action.payload.description,
 			);
 
 			if (idMatchExists || descriptionMatchExists) return;
