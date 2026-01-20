@@ -1,7 +1,9 @@
+import type { Guid } from './Guid';
+
 export type Expense = {
-	id: string;
+	id: Guid;
 	description: string;
 	note: string;
 	amount: number;
-	createdAt: number;
+	createdAt: string;
 };
