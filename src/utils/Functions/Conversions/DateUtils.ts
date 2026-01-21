@@ -1,10 +1,8 @@
 import type { Dayjs } from 'dayjs';
+import dayjs from 'dayjs';
 import type { EpochMillis, EpochSeconds } from '../../DataTypes/DateTypes';
 
-export const formatDateTimeSafe = (
-	dateString?: string,
-	fallback = 'N/A',
-): string => {
+export const formatDateTimeSafe = (dateString?: string, fallback = 'N/A'): string => {
 	if (!dateString) return fallback;
 
 	const date = new Date(dateString);
@@ -19,18 +17,15 @@ export const formatDateTimeSafe = (
 	});
 };
 
-export const toEpochSeconds = (date: Date | number): EpochSeconds => {
-	const ms = typeof date === 'number' ? date : date.getTime();
-	return Math.floor(ms / 1000) as EpochSeconds;
+export const dateToEpochSeconds = (date: Date | number): EpochSeconds => {
+	const milliseconds = typeof date === 'number' ? date : date.getTime();
+	return epochMillisToSeconds(milliseconds);
 };
 
-export const formatEpochSecondsSafe = (
-	seconds?: EpochSeconds,
-	fallback = 'N/A',
-): string => {
-	if (typeof seconds !== 'number') return fallback;
+export const formatEpochSecondsSafe = (epochSeconds?: EpochSeconds, fallback = 'N/A'): string => {
+	if (typeof epochSeconds !== 'number') return fallback;
 
-	const date = new Date(seconds * 1000);
+	const date = new Date(epochSeconds * 1000);
 	if (Number.isNaN(date.getTime())) return fallback;
 
 	return date.toLocaleString(undefined, {
@@ -40,18 +35,26 @@ export const formatEpochSecondsSafe = (
 	});
 };
 
-export const dayjsToEpochSecondsSafe = (date: Dayjs | null): EpochSeconds => {
-	if (!date) {
-		return Math.floor(Date.now() / 1000) as EpochSeconds;
-	}
-
-	return Math.floor(date.valueOf() / 1000) as EpochSeconds;
+export const dayjsToEpochSecondsSafeOrUndefined = (
+	date: Dayjs | null,
+): EpochSeconds | undefined => {
+	return date ? (date.unix() as EpochSeconds) : undefined;
 };
 
-export const epochSecondsToMillis = (seconds: EpochSeconds): EpochMillis => {
-	return (seconds * 1000) as EpochMillis;
+export const dayjsToEpochSecondsSafeOrNowEpochSeconds = (date: Dayjs | null): EpochSeconds => {
+	return (date ?? dayjs()).unix() as EpochSeconds;
 };
 
-export const epochMillisToSeconds = (millis: EpochMillis): EpochSeconds => {
-	return Math.floor(millis / 1000) as EpochSeconds;
+export const epochToDayjsOrUndefined = (epochSeconds?: number): Dayjs | undefined =>
+	epochSeconds ? dayjs.unix(epochSeconds) : undefined;
+
+export const epochToDayjsOrNull = (epochSeconds?: number): Dayjs | null =>
+	epochSeconds ? dayjs.unix(epochSeconds) : null;
+
+export const epochSecondsToMillis = (epochSeconds: EpochSeconds | number): EpochMillis => {
+	return (epochSeconds * 1000) as EpochMillis;
+};
+
+export const epochMillisToSeconds = (epochMilliSeconds: EpochMillis | number): EpochSeconds => {
+	return Math.floor(epochMilliSeconds / 1000) as EpochSeconds;
 };
