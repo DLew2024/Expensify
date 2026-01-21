@@ -1,13 +1,18 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
+import dayjs from 'dayjs';
+import type { EpochSeconds } from '../../utils/DataTypes/DateTypes';
 import { FilterSortBy, type Filters } from '../../utils/DataTypes/FilterTypes';
 
 type FiltersState = Filters;
 
+const startOfMonth = dayjs().startOf('month').unix() as EpochSeconds;
+const endOfMonth = dayjs().endOf('month').unix() as EpochSeconds;
+
 const initialState: FiltersState = {
 	text: '',
 	sortBy: FilterSortBy.DATE,
-	startDate: undefined,
-	endDate: undefined,
+	startDate: startOfMonth,
+	endDate: endOfMonth,
 };
 
 const filtersSlice = createSlice({
@@ -29,5 +34,5 @@ const filtersSlice = createSlice({
 	},
 });
 
-export const { setTextFilter, setSortBy } = filtersSlice.actions;
+export const { setTextFilter, setSortBy, setStartDate, setEndDate } = filtersSlice.actions;
 export default filtersSlice.reducer;
