@@ -58,8 +58,6 @@ const ExpenseDashBoardPage = () => {
 		);
 	}, [seedExpensesData, dispatch, randomEpochSeconds]);
 
-	console.log(store.getState());
-
 	return (
 		<div>
 			This is from my dashboard page
