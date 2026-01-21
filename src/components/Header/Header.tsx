@@ -28,16 +28,6 @@ const Header = () => {
 				Create Expense
 			</NavLink>
 			<NavLink
-				to={NavigationRoutePaths.EDIT_PATTERN}
-				className={({ isActive }) =>
-					clsx(styles.link, {
-						[styles.isActive]: isActive,
-					})
-				}
-			>
-				Edit Expense
-			</NavLink>
-			<NavLink
 				to={NavigationRoutePaths.HELP_PAGE}
 				className={({ isActive }) =>
 					clsx(styles.link, {
