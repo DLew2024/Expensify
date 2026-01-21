@@ -1,7 +1,6 @@
 import { useCallback, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { seedExpenses } from '../../../store/slices/expensesSlice';
-import { store } from '../../../store/store';
 import type { EpochSeconds } from '../../../utils/DataTypes/DateTypes';
 import { createNewGuid } from '../../../utils/DataTypes/Guid';
 import ExpenseList from './components/ExpenseList';
