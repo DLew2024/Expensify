@@ -4,8 +4,7 @@ import { NavigationRoutePaths } from '../../../utils/Navigation/NavigationRouteP
 const NotFoundPage = () => {
 	return (
 		<div>
-			Page not found 404 -
-			<Link to={NavigationRoutePaths.DASHBOARD}> Go home</Link>
+			Page not found 404 -<Link to={NavigationRoutePaths.DASHBOARD}> Go home</Link>
 		</div>
 	);
 };

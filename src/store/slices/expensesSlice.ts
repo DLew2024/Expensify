@@ -18,9 +18,7 @@ const expensesSlice = createSlice({
 	initialState,
 	reducers: {
 		addExpense(state, action: PayloadAction<ExpenseItem>) {
-			const idMatchExists = state.expenseItems.some(
-				(exp) => exp.id === action.payload.id,
-			);
+			const idMatchExists = state.expenseItems.some((exp) => exp.id === action.payload.id);
 			const descriptionMatchExists = state.expenseItems.some(
 				(exp) => exp.description === action.payload.description,
 			);
@@ -30,20 +28,13 @@ const expensesSlice = createSlice({
 			state.expenseItems.push(action.payload);
 		},
 		removeExpense(state, action: PayloadAction<ExpenseItem['id']>) {
-			state.expenseItems = state.expenseItems.filter(
-				(exp) => exp.id !== action.payload,
-			);
+			state.expenseItems = state.expenseItems.filter((exp) => exp.id !== action.payload);
 		},
 		editExpense(state, action: PayloadAction<ExpenseItem>) {
-			const index = state.expenseItems.findIndex(
-				(exp) => exp.id === action.payload.id,
-			);
+			const index = state.expenseItems.findIndex((exp) => exp.id === action.payload.id);
 
 			if (index === -1) {
-				console.warn(
-					'[editExpense] Expense not found for id:',
-					action.payload.id,
-				);
+				console.warn('[editExpense] Expense not found for id:', action.payload.id);
 				return;
 			}
 
@@ -61,6 +52,5 @@ const expensesSlice = createSlice({
 	},
 });
 
-export const { addExpense, removeExpense, editExpense, seedExpenses } =
-	expensesSlice.actions;
+export const { addExpense, removeExpense, editExpense, seedExpenses } = expensesSlice.actions;
 export default expensesSlice.reducer;

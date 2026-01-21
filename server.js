@@ -7,9 +7,7 @@ const port = process.env.PORT || 3000;
 const base = process.env.BASE || '/';
 
 // Cached production assets
-const templateHtml = isProduction
-	? await fs.readFile('./dist/client/index.html', 'utf-8')
-	: '';
+const templateHtml = isProduction ? await fs.readFile('./dist/client/index.html', 'utf-8') : '';
 
 // Create http server
 const app = express();

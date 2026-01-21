@@ -1,10 +1,7 @@
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router';
 import { useDispatch } from '../../../store/hooks';
-import {
-	editExpense,
-	removeExpense,
-} from '../../../store/slices/expensesSlice';
+import { editExpense, removeExpense } from '../../../store/slices/expensesSlice';
 import type { AppState } from '../../../store/store';
 import { EMPTY_EXPENSE } from '../../../utils/DataTypes/ExpenseTypes';
 import { NavigationRoutePaths } from '../../../utils/Navigation/NavigationRoutePaths';
@@ -15,9 +12,7 @@ const EditExpensePage = () => {
 	const dispatch = useDispatch();
 
 	const { id: paramId } = useParams<{ id: string }>();
-	const $expenses = useSelector(
-		(state: AppState) => state.expenses.expenseItems,
-	);
+	const $expenses = useSelector((state: AppState) => state.expenses.expenseItems);
 
 	const expense = $expenses.find((exp) => exp.id === paramId) ?? EMPTY_EXPENSE;
 

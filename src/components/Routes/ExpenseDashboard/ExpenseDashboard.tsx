@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { seedExpenses } from '../../../store/slices/expensesSlice';
 import type { EpochSeconds } from '../../../utils/DataTypes/DateTypes';
 import { createNewGuid } from '../../../utils/DataTypes/Guid';
+import { epochMillisToSeconds } from '../../../utils/Functions/Conversions/DateUtils';
 import ExpenseList from './components/ExpenseList';
 import ExpenseListFilters from './components/ExpenseListFilters';
 
@@ -13,8 +14,7 @@ const ExpenseDashBoardPage = () => {
 		const start = new Date(2020, 0, 1).getTime();
 		const end = Date.now();
 		const randomTime = start + Math.random() * (end - start);
-
-		return Math.floor(randomTime / 1000) as EpochSeconds;
+		return epochMillisToSeconds(randomTime);
 	}, []);
 
 	const seedExpensesData = [
