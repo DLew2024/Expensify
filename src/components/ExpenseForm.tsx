@@ -1,21 +1,29 @@
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import type { Dayjs } from 'dayjs';
+import dayjs from 'dayjs';
 import { type FormEvent, useState } from 'react';
-import type { Expense } from '../utils/DataTypes/ExpenseTypes';
-import { createNewGuid } from '../utils/DataTypes/Guid';
+import { EMPTY_EXPENSE, type Expense } from '../utils/DataTypes/ExpenseTypes';
+import { createNewGuid, EMPTY_GUID } from '../utils/DataTypes/Guid';
 import { dayjsToEpochSecondsSafe } from '../utils/Functions/Conversions/DateUtils';
 import { AMOUNT_REGEX } from '../utils/Regex/RegexUtils';
 
 type ExpenseFormProps = {
+	expense?: Expense;
 	onSubmitForm: (data: Expense) => void;
 };
 
-const ExpenseForm = ({ onSubmitForm }: ExpenseFormProps) => {
-	const [descriptionText, setDescriptionText] = useState<string>('');
-	const [amountValue, setAmountValue] = useState<string>('');
-	const [date, setDate] = useState<Dayjs | null>(null);
-	const [noteText, setNoteText] = useState<string>('');
+const ExpenseForm = ({
+	expense = EMPTY_EXPENSE,
+	onSubmitForm,
+}: ExpenseFormProps) => {
+	const { id, description, amount, createdAt, note } = expense;
+
+	const idToSubmit = id === EMPTY_GUID ? createNewGuid() : id;
+	const [descriptionText, setDescriptionText] = useState<string>(description);
+	const [amountValue, setAmountValue] = useState<string>(amount.toString());
+	const [date, setDate] = useState<Dayjs | null>(dayjs.unix(createdAt));
+	const [noteText, setNoteText] = useState<string>(note);
 	const [error, setError] = useState<string>('');
 
 	const onSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -26,12 +34,13 @@ const ExpenseForm = ({ onSubmitForm }: ExpenseFormProps) => {
 			console.error('Error: Please provide description and amount');
 		} else {
 			setError('');
+
 			onSubmitForm({
-				id: createNewGuid(),
-				description: descriptionText,
-				amount: parseFloat(amountValue),
+				id: idToSubmit,
 				createdAt: dayjsToEpochSecondsSafe(date),
+				description: descriptionText,
 				note: noteText,
+				amount: parseFloat(amountValue),
 			});
 		}
 	};
