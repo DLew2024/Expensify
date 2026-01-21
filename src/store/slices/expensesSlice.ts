@@ -39,12 +39,18 @@ const expensesSlice = createSlice({
 				(exp) => exp.id === action.payload.id,
 			);
 
-			if (index !== -1) {
-				state.expenseItems[index] = {
-					...state.expenseItems[index],
-					...action.payload,
-				};
+			if (index === -1) {
+				console.warn(
+					'[editExpense] Expense not found for id:',
+					action.payload.id,
+				);
+				return;
 			}
+
+			state.expenseItems[index] = {
+				...state.expenseItems[index],
+				...action.payload,
+			};
 		},
 		seedExpenses(state, action: PayloadAction<ExpensesState['expenseItems']>) {
 			if (state.hasSeeded) return;
