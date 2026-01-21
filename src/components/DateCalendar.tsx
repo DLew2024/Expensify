@@ -6,6 +6,13 @@ type Props = ComponentProps<typeof DatePicker>;
 
 export const DateCalendar = (props: Props) => (
 	<LocalizationProvider dateAdapter={AdapterDayjs}>
-		<DatePicker {...props} />
+		<DatePicker
+			{...props}
+			slotProps={{
+				field: {
+					clearable: true,
+				},
+			}}
+		/>
 	</LocalizationProvider>
 );
