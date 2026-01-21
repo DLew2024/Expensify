@@ -1,6 +1,6 @@
+import dayjs from 'dayjs';
 import type { Expense } from '../../DataTypes/ExpenseTypes';
 import { FilterSortBy, type Filters } from '../../DataTypes/FilterTypes';
-import { isFiniteNumber } from '../Conversions/NumberUtils';
 
 export const getVisibleExpenses = (
 	expenses: Expense[],
@@ -10,11 +10,11 @@ export const getVisibleExpenses = (
 
 	return expenses
 		.filter((expense) => {
-			const startDateMatch =
-				!isFiniteNumber(startDate) || expense.createdAt >= startDate;
+			const createdAtMoment = dayjs(expense.createdAt);
 
-			const endDateMatch =
-				!isFiniteNumber(endDate) || expense.createdAt <= endDate;
+			const startDateMatch = startDate ? !createdAtMoment.isBefore(startDate) : true;
+
+			const endDateMatch = endDate ? !createdAtMoment.isAfter(endDate) : true;
 
 			const textMatch =
 				normalizedText.length === 0 ||
