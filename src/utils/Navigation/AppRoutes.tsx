@@ -21,7 +21,7 @@ export const appRoutes: AppRoute[] = [
 		Component: AddExpensePage,
 	},
 	{
-		path: NavigationRoutePaths.EDIT_PATTERN,
+		path: NavigationRoutePaths.EDIT_PATTERN(),
 		Component: EditExpensePage,
 	},
 	{
