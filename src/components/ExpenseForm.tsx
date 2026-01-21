@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 import { type FormEvent, useState } from 'react';
 import { EMPTY_EXPENSE, type Expense } from '../utils/DataTypes/ExpenseTypes';
 import { createNewGuid, EMPTY_GUID } from '../utils/DataTypes/Guid';
-import { dayjsToEpochSecondsSafe } from '../utils/Functions/Conversions/DateUtils';
+import { dayjsToEpochSecondsSafeOrNowEpochSeconds } from '../utils/Functions/Conversions/DateUtils';
 import { AMOUNT_REGEX } from '../utils/Regex/RegexUtils';
 import { DateCalendar } from './DateCalendar';
 
@@ -33,7 +33,7 @@ const ExpenseForm = ({ expense = EMPTY_EXPENSE, onSubmitForm }: ExpenseFormProps
 
 			onSubmitForm({
 				id: idToSubmit,
-				createdAt: dayjsToEpochSecondsSafe(date),
+				createdAt: dayjsToEpochSecondsSafeOrNowEpochSeconds(date),
 				description: descriptionText,
 				note: noteText,
 				amount: parseFloat(amountValue),
