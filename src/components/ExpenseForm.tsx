@@ -1,5 +1,3 @@
-import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import type { Dayjs } from 'dayjs';
 import dayjs from 'dayjs';
 import { type FormEvent, useState } from 'react';
@@ -7,16 +5,14 @@ import { EMPTY_EXPENSE, type Expense } from '../utils/DataTypes/ExpenseTypes';
 import { createNewGuid, EMPTY_GUID } from '../utils/DataTypes/Guid';
 import { dayjsToEpochSecondsSafe } from '../utils/Functions/Conversions/DateUtils';
 import { AMOUNT_REGEX } from '../utils/Regex/RegexUtils';
+import { DateCalendar } from './DateCalendar';
 
 type ExpenseFormProps = {
 	expense?: Expense;
 	onSubmitForm: (data: Expense) => void;
 };
 
-const ExpenseForm = ({
-	expense = EMPTY_EXPENSE,
-	onSubmitForm,
-}: ExpenseFormProps) => {
+const ExpenseForm = ({ expense = EMPTY_EXPENSE, onSubmitForm }: ExpenseFormProps) => {
 	const { id, description, amount, createdAt, note } = expense;
 
 	const idToSubmit = id === EMPTY_GUID ? createNewGuid() : id;
@@ -62,11 +58,12 @@ const ExpenseForm = ({
 					value={amountValue}
 					onChange={(e) => {
 						const amount = e.target.value;
-						if (amount === '' || AMOUNT_REGEX.test(amount))
-							setAmountValue(amount);
+						if (amount === '' || AMOUNT_REGEX.test(amount)) setAmountValue(amount);
 					}}
 				/>
-				<DateCalendar value={date} onDateChange={setDate} />
+
+				<DateCalendar value={date} onChange={setDate} />
+
 				<textarea
 					name=""
 					id=""
@@ -81,15 +78,3 @@ const ExpenseForm = ({
 };
 
 export default ExpenseForm;
-
-const DateCalendar = ({
-	value,
-	onDateChange,
-}: {
-	value: Dayjs | null;
-	onDateChange: (value: Dayjs | null) => void;
-}) => (
-	<LocalizationProvider dateAdapter={AdapterDayjs}>
-		<DatePicker value={value} onChange={onDateChange} />
-	</LocalizationProvider>
-);
