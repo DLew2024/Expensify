@@ -1,42 +1,20 @@
-import clsx from 'clsx';
-import { NavLink } from 'react-router';
+import { Link } from 'react-router';
 import { NavigationRoutePaths } from '../../utils/Navigation/NavigationRoutePaths';
 import styles from './styles/_Header.module.scss';
 
 const Header = () => {
 	return (
-		<header>
-			<h1>Expensify</h1>
-			<NavLink
-				to={NavigationRoutePaths.DASHBOARD}
-				className={({ isActive }) =>
-					clsx(styles.link, {
-						[styles.isActive]: isActive,
-					})
-				}
-			>
-				Dashboard
-			</NavLink>
-			<NavLink
-				to={NavigationRoutePaths.CREATE_PAGE}
-				className={({ isActive }) =>
-					clsx(styles.link, {
-						[styles.isActive]: isActive,
-					})
-				}
-			>
-				Create Expense
-			</NavLink>
-			<NavLink
-				to={NavigationRoutePaths.HELP_PAGE}
-				className={({ isActive }) =>
-					clsx(styles.link, {
-						[styles.isActive]: isActive,
-					})
-				}
-			>
-				Help
-			</NavLink>
+		<header className={styles.header}>
+			<div className={styles.header__title}>
+				<div className={styles.header__content}>
+					<h1>Expensify</h1>
+					<Link className={styles.header} to={NavigationRoutePaths.DASHBOARD}>
+						Dashboard
+					</Link>
+
+					<button type="button">Log Out</button>
+				</div>
+			</div>
 		</header>
 	);
 };

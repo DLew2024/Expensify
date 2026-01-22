@@ -1,19 +1,29 @@
-import { useSelector } from 'react-redux';
-import type { AppState } from '../../../../store/store';
-import { getVisibleExpenses } from '../../../../utils/Functions/Utility/ExpenseFunctions';
+import type { Expense } from '../../../../utils/DataTypes/ExpenseTypes';
 import ExpenseListItem from './ExpenseListItem';
 
-const ExpenseList = () => {
-	const $expenses = useSelector((state: AppState) => state.expenses.expenseItems);
-	const $filters = useSelector((state: AppState) => state.filters);
-	const selectExpenses = getVisibleExpenses($expenses, $filters);
+type ExpenseListProps = {
+	expenses: Expense[];
+};
+
+const ExpenseList = ({ expenses }: ExpenseListProps) => {
+	const isMobile = true;
 
 	return (
-		<div>
-			<h1>Expense List</h1>
-			{selectExpenses.map((expense) => {
-				return <ExpenseListItem key={expense.id} {...expense} />;
-			})}
+		<div className="content_container">
+			<div className="list_headers">
+				<div className={isMobile && 'showForMobile'}>Expenses</div>
+				<div className={isMobile && 'showForDesktop'}>Expense</div>
+				<div className={isMobile && 'showForDesktop'}>Amount</div>
+			</div>
+			<div className="list_body">
+				{expenses.length === 0 ? (
+					<p>No Expenses</p>
+				) : (
+					expenses.map((expense) => {
+						return <ExpenseListItem key={expense.id} {...expense} />;
+					})
+				)}
+			</div>
 		</div>
 	);
 };

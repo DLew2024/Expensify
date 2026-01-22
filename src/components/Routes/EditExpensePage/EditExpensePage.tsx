@@ -18,23 +18,30 @@ const EditExpensePage = () => {
 
 	return (
 		<div>
-			Editing the expense with the id of {paramId}
-			<ExpenseForm
-				expense={expense}
-				onSubmitForm={(expense) => {
-					dispatch(editExpense(expense));
-					navigate(NavigationRoutePaths.DASHBOARD);
-				}}
-			/>
-			<button
-				type="button"
-				onClick={() => {
-					dispatch(removeExpense(expense.id));
-					navigate(NavigationRoutePaths.DASHBOARD);
-				}}
-			>
-				Remove
-			</button>
+			<div className="page-header">
+				<div className="content-container">
+					<h1 className="page_header__title">Edit Expense</h1>
+				</div>
+			</div>
+			<div className="content-container">
+				<ExpenseForm
+					expense={expense}
+					onSubmitForm={(expense) => {
+						dispatch(editExpense(expense));
+						navigate(NavigationRoutePaths.DASHBOARD);
+					}}
+				/>
+				<button
+					className="button"
+					type="button"
+					onClick={() => {
+						dispatch(removeExpense(expense.id));
+						navigate(NavigationRoutePaths.DASHBOARD);
+					}}
+				>
+					Remove Expense
+				</button>
+			</div>
 		</div>
 	);
 };

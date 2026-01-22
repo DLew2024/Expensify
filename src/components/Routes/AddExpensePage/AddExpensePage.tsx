@@ -10,13 +10,19 @@ const AddExpensePage = () => {
 
 	return (
 		<div>
-			<h1>Add Expense</h1>
-			<ExpenseForm
-				onSubmitForm={(expense) => {
-					dispatch(addExpense(expense));
-					navigate(NavigationRoutePaths.DASHBOARD);
-				}}
-			/>
+			<div className="page_header">
+				<div className="content_container">
+					<h1 className="page_header__title">Add Expense</h1>
+				</div>
+			</div>
+			<div className="content_container">
+				<ExpenseForm
+					onSubmitForm={(expense) => {
+						dispatch(addExpense(expense));
+						navigate(NavigationRoutePaths.DASHBOARD);
+					}}
+				/>
+			</div>
 		</div>
 	);
 };

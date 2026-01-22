@@ -1,9 +1,12 @@
 import { useCallback, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { useSelector } from '../../../store/hooks';
 import { seedExpenses } from '../../../store/slices/expensesSlice';
+import type { AppState } from '../../../store/store';
 import type { EpochSeconds } from '../../../utils/DataTypes/DateTypes';
 import { createNewGuid } from '../../../utils/DataTypes/Guid';
 import { epochMillisToSeconds } from '../../../utils/Functions/Conversions/DateUtils';
+import { getVisibleExpenses } from '../../../utils/Functions/Utility/ExpenseFunctions';
 import ExpenseList from './components/ExpenseList';
 import ExpenseListFilters from './components/ExpenseListFilters';
 
@@ -16,6 +19,10 @@ const ExpenseDashBoardPage = () => {
 		const randomTime = start + Math.random() * (end - start);
 		return epochMillisToSeconds(randomTime);
 	}, []);
+
+	const $expenses = useSelector((state: AppState) => state.expenses.expenseItems);
+	const $filters = useSelector((state: AppState) => state.filters);
+	const selectExpenses = getVisibleExpenses($expenses, $filters);
 
 	const seedExpensesData = [
 		{
@@ -61,7 +68,7 @@ const ExpenseDashBoardPage = () => {
 		<div>
 			This is from my dashboard page
 			<ExpenseListFilters />
-			<ExpenseList />
+			<ExpenseList expenses={selectExpenses} />
 		</div>
 	);
 };

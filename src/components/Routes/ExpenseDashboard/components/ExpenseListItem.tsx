@@ -6,17 +6,15 @@ import { NavigationRoutePaths } from '../../../../utils/Navigation/NavigationRou
 
 const ExpenseListItem = ({ id, description, amount, createdAt }: Expense) => {
 	return (
-		<div>
-			<h1>Expense List Item</h1>
-			<Link to={NavigationRoutePaths.EDIT_PATTERN(id)}>
-				{<h3 style={{ margin: 0 }}>{description}</h3>}
-			</Link>
-			<br />
-			<p>
-				{`${convertPriceToString(amount)} -
-                ${formatEpochSecondsSafe(createdAt)}`}
-			</p>
-		</div>
+		<Link className="list_item" to={NavigationRoutePaths.EDIT_PATTERN(id)}>
+			<div>
+				<h3 className="list_item__title" style={{ margin: 0 }}>
+					{description}
+				</h3>
+				<span className="list_item__subtitle">${formatEpochSecondsSafe(createdAt)}</span>
+			</div>
+			<h3 className="list_item__data">${convertPriceToString(amount)}</h3>
+		</Link>
 	);
 };
 
