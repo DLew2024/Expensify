@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router';
-import { useDispatch } from '../../../store/hooks';
-import { addExpense } from '../../../store/slices/expensesSlice';
-import { NavigationRoutePaths } from '../../../utils/Navigation/NavigationRoutePaths';
-import ExpenseForm from '../../ExpenseForm';
+import ExpenseForm from '../../components/ExpenseForm';
+import { useDispatch } from '../../store/hooks';
+import { addExpense } from '../../store/slices/expensesSlice';
+import { NavigationRoutePaths } from '../../utils/Navigation/NavigationRoutePaths';
 
 const AddExpensePage = () => {
 	const dispatch = useDispatch();

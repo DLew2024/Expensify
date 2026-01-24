@@ -1,4 +1,4 @@
-import { PrimaryInput } from '../../../Input';
+import { PrimaryInput } from '../../../components/Input';
 import styles from './styles/_LabeledInput.module.scss';
 
 export const LabeledInput = () => {

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import type { SmallCardType } from '../../../../utils/DataTypes/CardTypes';
+import type { SmallCardType } from '../../../utils/DataTypes/CardTypes';
 import { SmallCardIcon } from './SmallCardIcon';
 import styles from './styles/_SmallCardInput.module.scss';
 

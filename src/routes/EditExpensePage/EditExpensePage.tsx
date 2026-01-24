@@ -1,11 +1,11 @@
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router';
-import { useDispatch } from '../../../store/hooks';
-import { editExpense, removeExpense } from '../../../store/slices/expensesSlice';
-import type { AppState } from '../../../store/store';
-import { EMPTY_EXPENSE } from '../../../utils/DataTypes/ExpenseTypes';
-import { NavigationRoutePaths } from '../../../utils/Navigation/NavigationRoutePaths';
-import ExpenseForm from '../../ExpenseForm';
+import ExpenseForm from '../../components/ExpenseForm';
+import { useDispatch } from '../../store/hooks';
+import { editExpense, removeExpense } from '../../store/slices/expensesSlice';
+import type { AppState } from '../../store/store';
+import { EMPTY_EXPENSE } from '../../utils/DataTypes/ExpenseTypes';
+import { NavigationRoutePaths } from '../../utils/Navigation/NavigationRoutePaths';
 
 const EditExpensePage = () => {
 	const navigate = useNavigate();

@@ -1,4 +1,4 @@
-import { PrimaryInput } from '../../../Input';
+import { PrimaryInput } from "../../../components/Input";
 
 export const CurrencyInput = () => {
 	return (

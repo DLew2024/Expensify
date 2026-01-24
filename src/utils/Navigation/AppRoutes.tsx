@@ -1,10 +1,10 @@
 import type { ComponentType } from 'react';
-import AddExpensePage from '../../components/Routes/AddExpensePage/AddExpensePage';
-import CreateBudgetPage from '../../components/Routes/CreateBudgetPage/CreateBudgetPage';
-import EditExpensePage from '../../components/Routes/EditExpensePage/EditExpensePage';
-import ExpenseDashBoardPage from '../../components/Routes/ExpenseDashboard/ExpenseDashboard';
-import HelpExpensePage from '../../components/Routes/HelpPage/HelpPage';
-import NotFoundPage from '../../components/Routes/NotFoundPage/NotFoundPage';
+import AddExpensePage from '../../routes/AddExpensePage/AddExpensePage';
+import CreateBudgetPage from '../../routes/CreateBudgetPage/CreateBudgetPage';
+import EditExpensePage from '../../routes/EditExpensePage/EditExpensePage';
+import ExpenseDashBoardPage from '../../routes/ExpenseDashboard/ExpenseDashboard';
+import HelpExpensePage from '../../routes/HelpPage/HelpPage';
+import NotFoundPage from '../../routes/NotFoundPage/NotFoundPage';
 import { NavigationRoutePaths } from './NavigationRoutePaths';
 
 interface AppRoute {

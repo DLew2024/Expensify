@@ -1,8 +1,8 @@
 import { Link } from 'react-router';
-import type { Expense } from '../../../../utils/DataTypes/ExpenseTypes';
-import { formatEpochSecondsSafe } from '../../../../utils/Functions/Conversions/DateUtils';
-import { convertPriceToString } from '../../../../utils/Functions/Conversions/StringUtils';
-import { NavigationRoutePaths } from '../../../../utils/Navigation/NavigationRoutePaths';
+import type { Expense } from '../../../utils/DataTypes/ExpenseTypes';
+import { formatEpochSecondsSafe } from '../../../utils/Functions/Conversions/DateUtils';
+import { convertPriceToString } from '../../../utils/Functions/Conversions/StringUtils';
+import { NavigationRoutePaths } from '../../../utils/Navigation/NavigationRoutePaths';
 
 const ExpenseListItem = ({ id, description, amount, createdAt }: Expense) => {
 	return (

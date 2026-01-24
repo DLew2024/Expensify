@@ -1,4 +1,4 @@
-import type { Expense } from '../../../../utils/DataTypes/ExpenseTypes';
+import type { Expense } from '../../../utils/DataTypes/ExpenseTypes';
 import ExpenseListItem from './ExpenseListItem';
 
 type ExpenseListProps = {

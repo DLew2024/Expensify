@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './styles/_LoginPage.module.scss';
 
 // Add Google Auth Provider

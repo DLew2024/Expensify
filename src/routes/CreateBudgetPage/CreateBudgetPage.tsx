@@ -1,4 +1,4 @@
-import { SmallCardType } from '../../../utils/DataTypes/CardTypes';
+import { SmallCardType } from '../../utils/DataTypes/CardTypes';
 import MediumCardInputs from './components/MediumCardInputs';
 import { SmallCardInputs } from './components/SmallCardInputs';
 import styles from './styles/_CreateBudgetPage.module.scss';

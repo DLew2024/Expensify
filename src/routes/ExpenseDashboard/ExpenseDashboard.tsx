@@ -1,12 +1,12 @@
 import { useCallback, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { useSelector } from '../../../store/hooks';
-import { seedExpenses } from '../../../store/slices/expensesSlice';
-import type { AppState } from '../../../store/store';
-import type { EpochSeconds } from '../../../utils/DataTypes/DateTypes';
-import { createNewGuid } from '../../../utils/DataTypes/Guid';
-import { epochMillisToSeconds } from '../../../utils/Functions/Conversions/DateUtils';
-import { getVisibleExpenses } from '../../../utils/Functions/Utility/ExpenseFunctions';
+import { useSelector } from 'react-redux';
+import { useDispatch } from '../../store/hooks';
+import { seedExpenses } from '../../store/slices/expensesSlice';
+import type { AppState } from '../../store/store';
+import type { EpochSeconds } from '../../utils/DataTypes/DateTypes';
+import { createNewGuid } from '../../utils/DataTypes/Guid';
+import { epochMillisToSeconds } from '../../utils/Functions/Conversions/DateUtils';
+import { getVisibleExpenses } from '../../utils/Functions/Utility/ExpenseFunctions';
 import ExpenseList from './components/ExpenseList';
 import ExpenseListFilters from './components/ExpenseListFilters';
 

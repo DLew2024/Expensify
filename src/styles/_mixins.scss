@@ -9,3 +9,13 @@
     border: 1px solid black;
     border-radius: $defaultBorderRadius;
 }
+
+@mixin minimalScrollBar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(white, 0.75) transparent;
+}
+
+@mixin respond-between($min, $max) {
+    @media screen and (max-width: $max) and (min-width: $min) {
+    }
+}

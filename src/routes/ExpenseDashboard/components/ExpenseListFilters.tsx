@@ -1,18 +1,19 @@
 import type { Dayjs } from 'dayjs';
-import { useDispatch, useSelector } from '../../../../store/hooks';
+import { useSelector } from 'react-redux';
+import { DateCalendar } from '../../../components/DateCalendar';
+import { useDispatch } from '../../../store/hooks';
 import {
 	setEndDate,
 	setSortBy,
 	setStartDate,
 	setTextFilter,
-} from '../../../../store/slices/filtersSlice';
-import type { AppState } from '../../../../store/store';
-import { FilterSortBy, type FilterSortByType } from '../../../../utils/DataTypes/FilterTypes';
+} from '../../../store/slices/filtersSlice';
+import type { AppState } from '../../../store/store';
+import { FilterSortBy, type FilterSortByType } from '../../../utils/DataTypes/FilterTypes';
 import {
 	dayjsToEpochSecondsSafeOrUndefined,
 	epochToDayjsOrNull,
-} from '../../../../utils/Functions/Conversions/DateUtils';
-import { DateCalendar } from '../../../DateCalendar';
+} from '../../../utils/Functions/Conversions/DateUtils';
 
 const ExpenseListFilters = () => {
 	const dispatch = useDispatch();

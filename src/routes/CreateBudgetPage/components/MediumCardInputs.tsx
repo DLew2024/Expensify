@@ -1,4 +1,4 @@
-import MainTextTypography from '../../../MainTextTypography';
+import MainTextTypography from '../../../components/MainTextTypography';
 import { AddLabeledInputButton } from './AddLabeledInputButton';
 import { CurrencyInput } from './CurrencyInput';
 import { LabeledInput } from './LabeledInput';
