@@ -1,5 +1,6 @@
 import type { ComponentType } from 'react';
 import AddExpensePage from '../../components/Routes/AddExpensePage/AddExpensePage';
+import CreateBudgetPage from '../../components/Routes/CreateBudgetPage/CreateBudgetPage';
 import EditExpensePage from '../../components/Routes/EditExpensePage/EditExpensePage';
 import ExpenseDashBoardPage from '../../components/Routes/ExpenseDashboard/ExpenseDashboard';
 import HelpExpensePage from '../../components/Routes/HelpPage/HelpPage';
@@ -23,6 +24,10 @@ export const appRoutes: AppRoute[] = [
 	{
 		path: NavigationRoutePaths.EDIT_PATTERN(),
 		Component: EditExpensePage,
+	},
+	{
+		path: NavigationRoutePaths.BUDGET_PAGE,
+		Component: CreateBudgetPage,
 	},
 	{
 		path: NavigationRoutePaths.HELP_PAGE,
